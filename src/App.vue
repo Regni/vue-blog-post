@@ -8,6 +8,7 @@ import CreatePost from './components/CreatePost.vue';
 const title = ref("this is the title")
 const body = ref("lorem ipsum")
 const isBold = ref(true)
+const isItalic = ref(false)
 
 const handleTitleChange = (newTitle)=>{
   title.value = newTitle
@@ -21,19 +22,26 @@ const  handleBodyChange = (newBody)=>{
 const handleTitleBold =()=>{
   isBold.value = !isBold.value
 }
+
+const handleTitleItalic =()=>{
+  isItalic.value=!isItalic.value
+}
 </script>
 
 <template>
   <div class="app">
     <h1>Inlägg Förhandsgranskare</h1>
-  <PreviewPost :isBold="isBold" :title="title" :body="body"/>
+  <PreviewPost :isBold="isBold" :title="title" :body="body" :isItalic="isItalic"/>
   <CreatePost 
   :isBold="isBold" 
   :title="title" 
-  :body="body" 
+  :body="body"
+  :isItalic="isItalic"
   @bodyChanged="handleBodyChange" 
   @titleChanged="handleTitleChange"
-  @changeTitle ="handleTitleBold"/>
+  @changeTitleBold ="handleTitleBold"
+  @changeTitleItalic="handleTitleItalic"/>
+  
     </div>
 
 </template>

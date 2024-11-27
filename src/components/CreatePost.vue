@@ -1,4 +1,6 @@
 <script setup>
+import BaseButton from './BaseButton.vue';
+
 // Definiera props för title och body
 const props = defineProps({
 // Implementera props här
@@ -9,12 +11,13 @@ title: {
 body:{
   type:String,
   required: true},
-isBold: Boolean
+isBold: Boolean,
+isItalic: Boolean
 
 })
 // Definiera dina custom events
 const emit = defineEmits([
-'titleChanged', 'bodyChanged','changeTitle'
+'titleChanged', 'bodyChanged','changeTitleBold','changeTitleItalic'
 ])
 </script>
 <template>
@@ -29,7 +32,10 @@ type="text"
 placeholder="Skriv din titel här..."
 :value="title"
 @input="emit('titleChanged', $event.target.value)"
-><button @click ="emit('changeTitle')">{{isBold? "Normal" : " Bold "}}</button></div>
+><button @click ="emit('changeTitleBold')">{{isBold? "Normal" : " Bold "}}</button>
+<BaseButton :isActive="isBold" @clickBtn="emit('changeTitleBold')">B</BaseButton>
+<BaseButton :isActive="isItalic" @clickBtn="emit('changeTitleItalic')">I</BaseButton>
+</div>
 <!-- Skapa textarea för innehåll som:
 Använder body prop som value
 Emittar bodyChanged vid input -->

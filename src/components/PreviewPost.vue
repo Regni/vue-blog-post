@@ -9,7 +9,8 @@ body:{
   type: String,
   required: true
 },
-isBold: Boolean
+isBold: Boolean,
+isItalic: Boolean
 })
 
 </script>
@@ -17,7 +18,7 @@ isBold: Boolean
 <template>
    <div class="preview-post">
     <!-- Använd title prop här -->
-      <h2 :class="{'bold': isBold}">{{ props.title }}</h2>
+      <h2 :class="{'bold': isBold, 'italic':isItalic}">{{ props.title }}</h2>
       <div class="post-body">
         <!-- Använd body prop här -->
          {{ props.body }}
@@ -36,4 +37,8 @@ h2{
 .bold{
   font-weight: 800;
 }
+.italic{
+  font-style: italic;
+}
+
 </style>
