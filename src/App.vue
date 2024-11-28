@@ -3,6 +3,8 @@ import { ref } from 'vue';
 import HelloWorld from './components/HelloWorld.vue'
 import PreviewPost from './components/PreviewPost.vue';
 import CreatePost from './components/CreatePost.vue';
+import BaseCard from './components/BaseCard.vue';
+import BaseButton from './components/BaseButton.vue';
 
 
 const title = ref("this is the title")
@@ -43,7 +45,17 @@ const handleTitleItalic =()=>{
   @changeTitleItalic="handleTitleItalic"/>
   
     </div>
-
+<BaseCard :title="'Preview post'"><PreviewPost :isBold="isBold" :title="title" :body="body" :isItalic="isItalic"/></BaseCard>
+<BaseCard :title="'Preview post'"><CreatePost 
+  :isBold="isBold" 
+  :title="title" 
+  :body="body"
+  :isItalic="isItalic"
+  @bodyChanged="handleBodyChange" 
+  @titleChanged="handleTitleChange"
+  @changeTitleBold ="handleTitleBold"
+  @changeTitleItalic="handleTitleItalic"/><template #actions><BaseButton :isActive="isBold" @clickBtn="handleTitleBold">B</BaseButton>
+    <BaseButton :isActive="isItalic" @clickBtn="handleTitleItalic">I</BaseButton></template></BaseCard>
 </template>
 
 <style scoped>
