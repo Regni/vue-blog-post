@@ -5,6 +5,7 @@ import PreviewPost from './components/PreviewPost.vue';
 import CreatePost from './components/CreatePost.vue';
 import BaseCard from './components/BaseCard.vue';
 import BaseButton from './components/BaseButton.vue';
+import LifeCylce from './components/LifeCylce.vue';
 
 
 const title = ref("this is the title")
@@ -31,6 +32,12 @@ const handleTitleItalic =()=>{
 </script>
 
 <template>
+<div class="app">
+  <h1>Lifecycle Hooks</h1>
+  <LifeCylce :isBold="isBold"  v-if="isBold"></LifeCylce>
+</div>
+
+
   <div class="app">
     <h1>Inlägg Förhandsgranskare</h1>
   <PreviewPost :isBold="isBold" :title="title" :body="body" :isItalic="isItalic"/>

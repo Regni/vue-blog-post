@@ -29,7 +29,7 @@ isItalic: Boolean
 <style scoped>
 .preview-post {
 padding: 2rem;
-border: 2px solid black;
+
 }
 h2{
   font-weight: 200;
